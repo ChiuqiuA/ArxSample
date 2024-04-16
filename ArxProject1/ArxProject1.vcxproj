@@ -98,6 +98,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Tool.cpp" />
+    <ClCompile Include="ViewUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConvertUtil.h" />
@@ -109,6 +110,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="Tool.h" />
+    <ClInclude Include="ViewUtil.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ArxProject1.rc" />

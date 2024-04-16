@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Tool.h"
+#include "ViewUtil.h"
+#include "ConvertUtil.h"
 
 struct BlockInfo
 {
@@ -97,8 +99,8 @@ void SetPlotInfo(const BlockInfo& blockInfo, AcDbObjectId& idLayout, AcPlPlotInf
     }
     else
     {
-        AcGePoint3d ptMinDcs = WcsToDcsPoint(blockInfo.m_Extents.minPoint() - AcGeVector3d(1, 1, 0));
-        AcGePoint3d ptMaxDcs = WcsToDcsPoint(blockInfo.m_Extents.maxPoint() + AcGeVector3d(1, 1, 0));
+        AcGePoint3d ptMinDcs = CConvertUtil::WcsToDcsPoint(blockInfo.m_Extents.minPoint() - AcGeVector3d(1, 1, 0));
+        AcGePoint3d ptMaxDcs = CConvertUtil::WcsToDcsPoint(blockInfo.m_Extents.maxPoint() + AcGeVector3d(1, 1, 0));
         es = pPSV->setPlotWindowArea(pLayoutNew.get(), ptMinDcs.x, ptMinDcs.y, ptMaxDcs.x, ptMaxDcs.y);// 设置打印窗口区域
 
         es = pPSV->setPlotType(pLayoutNew.get(), AcDbPlotSettings::kWindow);
@@ -157,7 +159,7 @@ void PlotDwgToPdf(PlotSettingInfo& plotSettingInfo)
     // 获取原视图
     BOOL bNeedRestoreView = FALSE;
     AcDbViewTableRecord viewOld;
-    GetCurrentView(viewOld);
+    CViewUtil::GetCurrentView(viewOld);
 
     AcPlPlotEngine* pEngine = NULL;
     if (Acad::eOk == AcPlPlotFactory::createPublishEngine(pEngine))
