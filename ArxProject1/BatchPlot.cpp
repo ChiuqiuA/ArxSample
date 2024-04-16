@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Tool.h"
-#include "ViewUtil.h"
-#include "ConvertUtil.h"
+#include "Common/Common.h"
 
 struct BlockInfo
 {

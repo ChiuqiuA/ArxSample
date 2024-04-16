@@ -84,12 +84,13 @@
     <ClCompile Include="acrxEntryPoint.cpp" />
     <ClCompile Include="ArxProject1.cpp" />
     <ClCompile Include="BatchPlot.cpp" />
-    <ClCompile Include="PolylineUtil.cpp" />
-    <ClCompile Include="DwgDatabaseUtil.cpp" />
-    <ClCompile Include="ConvertUtil.cpp" />
+    <ClCompile Include="Common\ConvertUtil.cpp" />
+    <ClCompile Include="Common\DwgDatabaseUtil.cpp" />
+    <ClCompile Include="Common\EntityUtil.cpp" />
+    <ClCompile Include="Common\MathUtil.cpp" />
+    <ClCompile Include="Common\PolylineUtil.cpp" />
+    <ClCompile Include="Common\ViewUtil.cpp" />
     <ClCompile Include="DocData.cpp" />
-    <ClCompile Include="EntityUtil.cpp" />
-    <ClCompile Include="MathUtil.cpp" />
     <ClCompile Include="MergePline.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -98,19 +99,19 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Tool.cpp" />
-    <ClCompile Include="ViewUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConvertUtil.h" />
+    <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Common\ConvertUtil.h" />
+    <ClInclude Include="Common\DwgDatabaseUtil.h" />
+    <ClInclude Include="Common\EntityUtil.h" />
+    <ClInclude Include="Common\MathUtil.h" />
+    <ClInclude Include="Common\PolylineUtil.h" />
+    <ClInclude Include="Common\ViewUtil.h" />
     <ClInclude Include="DocData.h" />
-    <ClInclude Include="DwgDatabaseUtil.h" />
-    <ClInclude Include="EntityUtil.h" />
-    <ClInclude Include="MathUtil.h" />
-    <ClInclude Include="PolylineUtil.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="Tool.h" />
-    <ClInclude Include="ViewUtil.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ArxProject1.rc" />

@@ -39,22 +39,22 @@
     <ClCompile Include="MergePline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MathUtil.cpp">
+    <ClCompile Include="Common\ConvertUtil.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="ConvertUtil.cpp">
+    <ClCompile Include="Common\DwgDatabaseUtil.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="DwgDatabaseUtil.cpp">
+    <ClCompile Include="Common\EntityUtil.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="EntityUtil.cpp">
+    <ClCompile Include="Common\MathUtil.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="PolylineUtil.cpp">
+    <ClCompile Include="Common\PolylineUtil.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="ViewUtil.cpp">
+    <ClCompile Include="Common\ViewUtil.cpp">
       <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,22 +71,25 @@
     <ClInclude Include="Tool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MathUtil.h">
+    <ClInclude Include="Common\ConvertUtil.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="ConvertUtil.h">
+    <ClInclude Include="Common\DwgDatabaseUtil.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="DwgDatabaseUtil.h">
+    <ClInclude Include="Common\EntityUtil.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="EntityUtil.h">
+    <ClInclude Include="Common\MathUtil.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="PolylineUtil.h">
+    <ClInclude Include="Common\PolylineUtil.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="ViewUtil.h">
+    <ClInclude Include="Common\ViewUtil.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Common.h">
       <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>

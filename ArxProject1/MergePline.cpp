@@ -1,9 +1,5 @@
 #include "StdAfx.h"
-#include "MathUtil.h"
-#include "ConvertUtil.h"
-#include "DwgDatabaseUtil.h"
-#include "EntityUtil.h"
-#include "PolylineUtil.h"
+#include "Common/Common.h"
 
 struct PointInfo
 {
