@@ -85,6 +85,7 @@
     <ClCompile Include="ArxProject1.cpp" />
     <ClCompile Include="BatchPlot.cpp" />
     <ClCompile Include="DocData.cpp" />
+    <ClCompile Include="MergePline.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

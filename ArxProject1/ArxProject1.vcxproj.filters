@@ -33,6 +33,9 @@
     <ClCompile Include="Tool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MergePline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h">
