@@ -123,7 +123,7 @@ AcGePoint3d WcsToDcsPoint(const AcGePoint3d& point)
     return pt;
 }
 
-void ViewSet(const AcGePoint3d& ptMin, const AcGePoint3d& ptMax, double scale = 1.0)
+void ViewSet(const AcGePoint3d& ptMin, const AcGePoint3d& ptMax, double scale /*= 1.0*/)
 {
     AcDbViewTableRecord view;
     GetCurrentView(view);

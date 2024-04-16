@@ -1,7 +1,4 @@
 #include "stdafx.h"
-#include "BatchPlot.h"
-#include <vector>
-#include <set>
 #include "Tool.h"
 
 struct BlockInfo
@@ -178,7 +175,7 @@ void PlotDwgToPdf(PlotSettingInfo& plotSettingInfo)
         pPlotProgDlg->onBeginPlot();
         pPlotProgDlg->setIsVisible(true);
 
-        int nDwgCount = plotSettingInfo.m_vecBlockInfo4Plot.size();
+        size_t nDwgCount = plotSettingInfo.m_vecBlockInfo4Plot.size();
         for (int num = 0; num < plotSettingInfo.m_vecBlockInfo4Plot.size(); num++)
         {
             if (pPlotProgDlg->isPlotCancelled() || pPlotProgDlg->isSheetCancelled())

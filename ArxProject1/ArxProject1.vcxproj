@@ -94,7 +94,6 @@
     <ClCompile Include="Tool.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BatchPlot.h" />
     <ClInclude Include="DocData.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StdAfx.h" />
