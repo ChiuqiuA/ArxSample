@@ -1,4 +1,9 @@
 #include "StdAfx.h"
+#include "MathUtil.h"
+#include "ConvertUtil.h"
+#include "DwgDatabaseUtil.h"
+#include "EntityUtil.h"
+#include "PolylineUtil.h"
 
 struct PointInfo
 {
@@ -13,35 +18,23 @@ struct PointInfo
 	AcGePoint2dArray m_ptArray;
 };
 
-// 判断两个数是否相等
-bool RealIsEqual(double a, double b, double tol = 1.0E-7)
-{
-	return (fabs(a - b) < tol);
-}
-
-// 判断两个浮点数是否小于
-bool RealIsLess(double a, double b, double tol = 1.0E-7)
-{
-	return ((a - b) < -tol);
-}
-
 struct AcGePoint3d_Less
 {
 	bool operator()(const AcGePoint3d& pt1, const AcGePoint3d& pt2) const
 	{
-		if (RealIsLess(pt1.x, pt2.x))
+		if (CMathUtil::IsLess(pt1.x, pt2.x))
 		{
 			return true;
 		}
-		else if (RealIsEqual(pt1.x, pt2.x))
+		else if (CMathUtil::IsEqual(pt1.x, pt2.x))
 		{
-			if (RealIsLess(pt1.y, pt2.y))
+			if (CMathUtil::IsLess(pt1.y, pt2.y))
 			{
 				return true;
 			}
-			else if (RealIsEqual(pt1.y, pt2.y))
+			else if (CMathUtil::IsEqual(pt1.y, pt2.y))
 			{
-				if (RealIsLess(pt1.z, pt2.z))
+				if (CMathUtil::IsLess(pt1.z, pt2.z))
 				{
 					return true;
 				}
@@ -61,80 +54,6 @@ struct AcGePoint3d_Less
 		}
 	}
 };
-
-AcGePoint3d ToPoint3d(const AcGePoint2d& point2d, double z = 0)
-{
-	return AcGePoint3d(point2d.x, point2d.y, z);
-}
-
-AcDbObjectId PostToModelSpace(AcDbEntity* pEnt, AcDbDatabase* pDb = acdbCurDwg())
-{
-	// 检查输入参数的有效性
-	std::unique_ptr<AcDbEntity> ptrEnt(pEnt);
-	pEnt = nullptr;
-	if (!ptrEnt)
-	{
-		assert(ptrEnt); // 等效于assert (pEnt != NULL);
-		return AcDbObjectId::kNull;
-	}
-
-	// 获得对应的块表记录
-	AcDbObjectPointer<AcDbBlockTableRecord> pBTR(acdbSymUtil()->blockModelSpaceId(pDb), AcDb::kForWrite);
-	if (!pBTR)
-	{
-		return AcDbObjectId::kNull;
-	}
-
-	// 将实体添加到模型空间的块表记录
-	AcDbObjectId	  entId;
-	Acad::ErrorStatus es = pBTR->appendAcDbEntity(entId, ptrEnt.get());
-	if (es != Acad::eOk)
-	{
-		return AcDbObjectId::kNull;
-	}
-
-	// 关闭模型空间块表记录和实体
-	ptrEnt->close();
-	ptrEnt.release(); // 加入到块表记录后不能delete该实体
-
-	return entId;
-}
-
-AcDbObjectId AddPolyline(const AcGePoint2dArray& points, double width = 0,
-	AcDbDatabase* pDb = acdbCurDwg())
-{
-	int numVertices = points.length();
-	AcDbPolyline* pPoly = new AcDbPolyline(numVertices);
-
-	for (int i = 0; i < numVertices; i++)
-	{
-		pPoly->addVertexAt(i, points.at(i), 0, width, width);
-	}
-
-	AcDbObjectId polyId;
-	polyId = PostToModelSpace(pPoly, pDb);
-
-	return polyId;
-}
-
-void EraseEntity(AcDbObjectId entId)
-{
-	AcDbEntity* pEnt = NULL;
-	if (acdbOpenObject(pEnt, entId, AcDb::kForWrite) == Acad::eOk)
-	{
-		pEnt->erase();
-		pEnt->close();
-	}
-}
-
-template <class Ty>
-static void EraseEntities(Ty ids)
-{
-	for (const auto& id : ids)
-	{
-		EraseEntity(id);
-	}
-}
 
 AcDbObjectIdArray MergePolyline(const AcDbObjectIdArray& idArray, bool bRetainMergedMembers = true)
 {
@@ -184,7 +103,7 @@ AcDbObjectIdArray MergePolyline(const AcDbObjectIdArray& idArray, bool bRetainMe
 
 			if (ptArray.length())
 			{
-				iterFind = mmapPt2PointInfo.find(ToPoint3d(ptArray.last()));
+				iterFind = mmapPt2PointInfo.find(CConvertUtil::ToPoint3d(ptArray.last()));
 			}
 			while (iterFind != mmapPt2PointInfo.end())
 			{
@@ -195,7 +114,7 @@ AcDbObjectIdArray MergePolyline(const AcDbObjectIdArray& idArray, bool bRetainMe
 
 				setId.insert(iterFind->second.m_id);
 				mmapPt2PointInfo.erase(iterFind);
-				iterFind = mmapPt2PointInfo.find(ToPoint3d(ptArray.last()));
+				iterFind = mmapPt2PointInfo.find(CConvertUtil::ToPoint3d(ptArray.last()));
 			}
 
 			// 删除已经添加点的线段
@@ -219,7 +138,7 @@ AcDbObjectIdArray MergePolyline(const AcDbObjectIdArray& idArray, bool bRetainMe
 		}
 		else
 		{
-			AcDbObjectId idPline = AddPolyline(ptArray);
+			AcDbObjectId idPline = CPolylineUtil::Add(ptArray);
 			if (!idPline.isNull())
 			{
 				idsPline.append(idPline);
@@ -234,7 +153,7 @@ AcDbObjectIdArray MergePolyline(const AcDbObjectIdArray& idArray, bool bRetainMe
 			}
 			if (!bRetainMergedMembers)
 			{
-				EraseEntities(setId);
+				CEntityUtil::Erase(setId);
 			}
 		}
 	}

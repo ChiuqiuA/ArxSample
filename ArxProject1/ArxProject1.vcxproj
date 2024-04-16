@@ -84,7 +84,12 @@
     <ClCompile Include="acrxEntryPoint.cpp" />
     <ClCompile Include="ArxProject1.cpp" />
     <ClCompile Include="BatchPlot.cpp" />
+    <ClCompile Include="PolylineUtil.cpp" />
+    <ClCompile Include="DwgDatabaseUtil.cpp" />
+    <ClCompile Include="ConvertUtil.cpp" />
     <ClCompile Include="DocData.cpp" />
+    <ClCompile Include="EntityUtil.cpp" />
+    <ClCompile Include="MathUtil.cpp" />
     <ClCompile Include="MergePline.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -95,7 +100,12 @@
     <ClCompile Include="Tool.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConvertUtil.h" />
     <ClInclude Include="DocData.h" />
+    <ClInclude Include="DwgDatabaseUtil.h" />
+    <ClInclude Include="EntityUtil.h" />
+    <ClInclude Include="MathUtil.h" />
+    <ClInclude Include="PolylineUtil.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="Tool.h" />

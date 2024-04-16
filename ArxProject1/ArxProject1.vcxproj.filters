@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{ab12980b-24bb-4056-a261-fd52e22ada38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StdAfx.cpp">
@@ -36,6 +39,21 @@
     <ClCompile Include="MergePline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MathUtil.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvertUtil.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="DwgDatabaseUtil.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityUtil.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="PolylineUtil.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h">
@@ -49,6 +67,21 @@
     </ClInclude>
     <ClInclude Include="Tool.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtil.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvertUtil.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="DwgDatabaseUtil.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityUtil.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="PolylineUtil.h">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
